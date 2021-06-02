@@ -78,11 +78,7 @@
             status.innerHTML = '<input type="checkbox"/>' + document.getElementById("cell3").value;
             puntos.innerHTML = '...';
 
-
-
         }
-
-
 
         function aparece() {
             var x = document.getElementById('tabla').insertRow(document.getElementById('tabla').rows.length);
@@ -94,7 +90,7 @@
 
             var filas = document.getElementById('tabla').rows.length - 1;
 
-            p.innerHTML = '<input type="checkbox"/> name="check" ';
+            p.innerHTML = '<input type="checkbox"/>';
             task.innerHTML = '<input id="cell1" type="text" />';
             priority.innerHTML = '<select id="cell2" name="OS"><option value="High">High</option><option value="Medium">Medium</option> <option value="Low">Low</option></select>';
             status.innerHTML = '<input id="cell3" type="text" />';
