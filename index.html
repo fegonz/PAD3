@@ -19,7 +19,7 @@
             <td><input type="checkbox" value="Delete" /></td>
             <td>#1 Requirements specification</td>
             <td>High</td>
-            <td>Complete</td>
+            <td><input type="checkbox" value="Complete" />Complete</td>
             <td>...</td>
 
 
@@ -28,28 +28,33 @@
             <td><input type="checkbox" value="Delete" /></td>
             <td>#2 Detalled scenarios definition</td>
             <td>High</td>
-            <td>Complete</td>
+            <td><input type="checkbox" value="Complete" />Complete</td>
             <td>...</td>
         </tr>
         <tr>
             <td><input type="checkbox" value="Delete" /></td>
             <td>#3 Final report ethical issue assement</td>
             <td>High</td>
-            <td>Complete</td>
+            <td><input type="checkbox" value="Complete" />Complete</td>
             <td>...</td>
         </tr>
         <tr>
             <td><input type="checkbox" value="Delete" name="" /></td>
             <td>#4 Final project report</td>
             <td>High</td>
-            <td>Pending</td>
+            <td><input type="checkbox" value="Pending" />Pending</td>
             <td>...</td>
         </tr>
     </table>
     <br>
 
     <input id='cell1' type="text" />
-    <input id='cell2' type="text" />
+    <select id="cell2" name="OS">
+   <option value="High">High</option> 
+   <option value="Medium">Medium</option> 
+   <option value="Low">Low</option>
+  
+</select>
     <input id='cell3' type="text" />
 
     <button onclick="insRow()">Add</button>
@@ -72,12 +77,14 @@
             var task = x.insertCell(1);
             var priority = x.insertCell(2);
             var status = x.insertCell(3);
-            var puntos = x.insertCell(3);
+            var puntos = x.insertCell(4);
+
+            var filas = document.getElementById('tabla').rows.length - 1;
 
             p.innerHTML = '<input type="checkbox"/>';
-            task.innerHTML = document.getElementById("cell1").value;
+            task.innerHTML = "#" + filas + " " + document.getElementById("cell1").value;
             priority.innerHTML = document.getElementById("cell2").value;
-            status.innerHTML = document.getElementById("cell3").value;
+            status.innerHTML = '<input type="checkbox"/>' + document.getElementById("cell3").value;
             puntos.innerHTML = '...';
 
         }
