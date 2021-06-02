@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html>
 
+<script>
+    $(document).ready(function() {
+        $('.deleteBtn').click(function() {
+            $('input:checked').each(function() {
+                $(this).parent('tr').remove();
+            });
+        });
+    });
+</script>
+
 <body>
 
     <p>Tabla</p>
@@ -15,36 +25,7 @@
 
 
         </tr>
-        <tr>
-            <td><input type="checkbox" value="Delete" /></td>
-            <td>#1 Requirements specification</td>
-            <td>High</td>
-            <td><input type="checkbox" value="Complete" />Complete</td>
-            <td>...</td>
 
-
-        </tr>
-        <tr>
-            <td><input type="checkbox" value="Delete" /></td>
-            <td>#2 Detalled scenarios definition</td>
-            <td>High</td>
-            <td><input type="checkbox" value="Complete" />Complete</td>
-            <td>...</td>
-        </tr>
-        <tr>
-            <td><input type="checkbox" value="Delete" /></td>
-            <td>#3 Final report ethical issue assement</td>
-            <td>High</td>
-            <td><input type="checkbox" value="Complete" />Complete</td>
-            <td>...</td>
-        </tr>
-        <tr>
-            <td><input type="checkbox" value="Delete" name="" /></td>
-            <td>#4 Final project report</td>
-            <td>High</td>
-            <td><input type="checkbox" value="Pending" />Pending</td>
-            <td>...</td>
-        </tr>
     </table>
     <br>
 
@@ -58,15 +39,30 @@
     <input id='cell3' type="text" />
 
     <button onclick="insRow()">Add</button>
-    <button onclick="deleteRow(this)">Delete</button>
+    <button onclick="deleteRow('tabla')">Delete</button>
 
 
     <p id="demo"></p>
 
     <script>
-        function deleteRow(r) {
-            var i = r.parentNode.parentNode.rowIndex;
-            document.getElementById('tabla').deleteRow(i);
+        function deleteRow(tableID) {
+
+
+
+            var table = document.getElementById(tableID).tBodies[0];
+
+            var rowCount = table.rows.length;
+
+
+            // var i=1 to start after header
+            for (var i = 1; i < rowCount; i++) {
+                var row = table.rows[i];
+                // index of td contain checkbox is 8
+                var chkbox = row.cells[0].getElementsByTagName('input')[0];
+                if ('checkbox' == chkbox.type && true == chkbox.checked) {
+                    table.deleteRow(i);
+                }
+            }
         }
 
 
