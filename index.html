@@ -26,7 +26,7 @@
 
     <body>
 
-        <p>Tabla</p>
+        <p>Tabla1</p>
 
         <table id="tabla">
             <tr>
@@ -52,36 +52,41 @@
 </select>
         <input id='cell3' type="text" />
 
-        <button onclick="insRow()">Add</button>
-        <button onclick="deleteRow('tabla')">Delete</button>
-        <button onclick="changeStatus('tabla')">Status</button>
+        <button onclick="insRow()">Create a task</button>
+        <button onclick="deleteRow()">Delete</button>
+        <button onclick="changeStatus('tabla')">Complete</button>
 
         <p id="demo"></p>
 
         <script>
-            function deleteRow(tableID) {
+            function deleteRow() {
+
+                var table = document.getElementById("tabla");
 
 
-                var table = document.getElementById(tableID).tBodies[0];
-
-                var rowCount = table.rows.length;
+                var index = 1;
 
 
+                while (index < table.rows.length) {
 
-                for (var i = 1; i < rowCount; i++) {
-                    var row = table.rows[i];
+                    var input = table.rows[index].cells[0].children[0];
 
-                    var chkbox = row.cells[0].getElementsByTagName('input')[0];
 
-                    if ('checkbox' == chkbox.type && true == chkbox.checked) {
-                        table.deleteRow(i);
+                    if (input && input.checked) {
+
+                        table.deleteRow(index);
+                    } else {
+
+                        index++;
                     }
                 }
             }
 
 
 
+
             function changeStatus(tableID) {
+
 
 
                 var table = document.getElementById(tableID).tBodies[0];
@@ -96,10 +101,19 @@
                     var chkbox = row.cells[3].getElementsByTagName('input')[0];
 
                     if ('checkbox' == chkbox.type && true == chkbox.checked) {
-                        var cs = row.cells[4].getElementsByTagName('td')[0];
-                        console.log(cs);
+                        row.cells[4].innerHTML = "complete";
+
                     }
                 }
+
+
+
+
+
+
+
+
+
 
             }
 
