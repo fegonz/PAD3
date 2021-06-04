@@ -144,7 +144,7 @@
                 var filas = document.getElementById('tabla').rows.length - 1;
 
                 p.innerHTML = '<input type="checkbox"/>';
-                task.innerHTML = "#" + filas + "<label onclick='editar()'/>" + document.getElementById("cell1").value + "</label>";
+                task.innerHTML = "#" + filas + "<label onclick='editar(" + filas + ")'/>" + document.getElementById("cell1").value + "</label>";
                 priority.innerHTML = document.getElementById("cell2").value;
                 statusCheck.innerHTML = '<input  type="checkbox"/>';
                 status.innerHTML = document.getElementById("cell3").value;
@@ -156,8 +156,10 @@
 
             }
 
-            function editar() {
+            function editar(filas) {
                 var table = document.getElementById("tabla").tBodies[0];
+
+
 
                 var rowCount = table.rows.length;
 
@@ -167,7 +169,10 @@
                     var row = table.rows[i];
 
                     var edit = row.cells[1].getElementsByTagName('label')[0].innerHTML;
-                    row.cells[1].getElementsByTagName('label')[0].innerHTML = "<input type='text' value='" + edit + "' /></input>";
+                    if (i == filas) {
+                        row.cells[1].getElementsByTagName('label')[0].innerHTML = "<input type='text' value='" + edit + "' /></input>";
+                    }
+
 
 
                 }
