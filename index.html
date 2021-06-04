@@ -61,7 +61,7 @@
 
                 var x = document.getElementById('agn');
 
-                x.innerHTML = '<form id="formu"><input id="cell1" type="text" /><select id="cell2" name="OS"><option value="High">High</option> <option value="Medium">Medium</option> <option value="Low">Low</option><input id="cell3" type="text" /><button onclick="insRow()">Save</button><button onclick="">Cancel</button></form>';
+                x.innerHTML = '<form id="formu"><input id="cell1" type="text" /><select id="cell2" name="OS"><option value="High">High</option> <option value="Medium">Medium</option> <option value="Low">Low</option></select><select id="cell3"<option value="Complete">Complete</option><option value="Pending">Pending</option> </select><button onclick="insRow()">Save</button><button onclick="">Cancel</button></form>';
 
 
 
@@ -148,7 +148,7 @@
                 priority.innerHTML = document.getElementById("cell2").value;
                 statusCheck.innerHTML = '<input  type="checkbox"/>';
                 status.innerHTML = document.getElementById("cell3").value;
-                puntos.innerHTML = '...';
+                puntos.innerHTML = '<select id="cell4" name="OS"><option>...</option><option value="Complete">Complete</option><option value="Pending">Pending</option> </select>';
 
                 var formu = document.getElementById("formu");
                 formu.parentNode.removeChild(formu);
@@ -166,8 +166,8 @@
                 for (var i = 1; i < rowCount; i++) {
                     var row = table.rows[i];
 
-                    var chkbox = row.cells[1].getElementsByTagName('label')[0].innerHTML;
-                    row.cells[1].getElementsByTagName('label')[0].innerHTML = "<input /></input>";
+                    var edit = row.cells[1].getElementsByTagName('label')[0].innerHTML;
+                    row.cells[1].getElementsByTagName('label')[0].innerHTML = "<input type='text' value='" + edit + "' /></input>";
 
 
                 }
