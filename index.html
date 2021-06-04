@@ -82,6 +82,8 @@
 
 
             function changeStatus(tableID) {
+
+
                 var table = document.getElementById(tableID).tBodies[0];
 
                 var rowCount = table.rows.length;
@@ -91,10 +93,14 @@
                 for (var i = 1; i < rowCount; i++) {
                     var row = table.rows[i];
 
-                    var prueba = row.cells[3].getElementsByTagName('input')[3];
+                    var chkbox = row.cells[3].getElementsByTagName('input')[0];
 
-                    console.log(prueba);
+                    if ('checkbox' == chkbox.type && true == chkbox.checked) {
+                        var cs = row.cells[4].getElementsByTagName('td')[0];
+                        console.log(cs);
+                    }
                 }
+
             }
 
             function insRow() {
@@ -111,7 +117,7 @@
                 p.innerHTML = '<input type="checkbox"/>';
                 task.innerHTML = "#" + filas + " " + document.getElementById("cell1").value;
                 priority.innerHTML = document.getElementById("cell2").value;
-                statusCheck.innerHTML = '<input type="checkbox"/>';
+                statusCheck.innerHTML = '<input  type="checkbox"/>';
                 status.innerHTML = document.getElementById("cell3").value;
                 puntos.innerHTML = '...';
 
