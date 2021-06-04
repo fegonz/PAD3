@@ -28,6 +28,15 @@
 
         <p>Tabla1</p>
 
+
+        <button onclick="createButtons()">Create a task</button>
+        <button onclick="deleteRow()">Delete</button>
+        <button onclick="changeStatus('tabla')">Complete</button>
+
+        <div id="agn">
+
+
+        </div>
         <table id="tabla">
             <tr>
                 <td><input type="checkbox" /></td>
@@ -43,22 +52,26 @@
         </table>
         <br>
 
-        <input id='cell1' type="text" />
-        <select id="cell2" name="OS">
-   <option value="High">High</option> 
-   <option value="Medium">Medium</option> 
-   <option value="Low">Low</option>
-  
-</select>
-        <input id='cell3' type="text" />
 
-        <button onclick="insRow()">Create a task</button>
-        <button onclick="deleteRow()">Delete</button>
-        <button onclick="changeStatus('tabla')">Complete</button>
 
         <p id="demo"></p>
 
         <script>
+            function createButtons() {
+
+                var x = document.getElementById('agn');
+
+                x.innerHTML = '<form id="formu"><input id="cell1" type="text" /><select id="cell2" name="OS"><option value="High">High</option> <option value="Medium">Medium</option> <option value="Low">Low</option><input id="cell3" type="text" /><button onclick="insRow()">Save</button><button onclick="">Cancel</button></form>';
+
+
+
+
+
+            }
+
+
+
+
             function deleteRow() {
 
                 var table = document.getElementById("tabla");
@@ -81,6 +94,8 @@
                     }
                 }
             }
+
+
 
 
 
@@ -129,11 +144,62 @@
                 var filas = document.getElementById('tabla').rows.length - 1;
 
                 p.innerHTML = '<input type="checkbox"/>';
-                task.innerHTML = "#" + filas + " " + document.getElementById("cell1").value;
+                task.innerHTML = "#" + filas + "<label onclick='editar()'/>" + document.getElementById("cell1").value + "</label>";
                 priority.innerHTML = document.getElementById("cell2").value;
                 statusCheck.innerHTML = '<input  type="checkbox"/>';
                 status.innerHTML = document.getElementById("cell3").value;
                 puntos.innerHTML = '...';
+
+                var formu = document.getElementById("formu");
+                formu.parentNode.removeChild(formu);
+
+
+            }
+
+            function editar() {
+                var table = document.getElementById("tabla").tBodies[0];
+
+                var rowCount = table.rows.length;
+
+
+
+                for (var i = 1; i < rowCount; i++) {
+                    var row = table.rows[i];
+
+                    var chkbox = row.cells[1].getElementsByTagName('label')[0].innerHTML;
+                    row.cells[1].getElementsByTagName('label')[0].innerHTML = "<input /></input>";
+
+
+                }
+
+
+
+
+
+            }
+
+            function deleteFile() {
+
+                var table = document.getElementById(tableID).tBodies[0];
+
+                var rowCount = table.rows.length;
+
+                for (var i = 1; i < rowCount; i++) {
+                    var row = table.rows[i];
+
+                    var chkbox = row.cells[3].getElementsByTagName('input')[0];
+
+                    if ('checkbox' == chkbox.type && true == chkbox.checked) {
+                        row.cells[4].innerHTML = "complete";
+
+                    }
+                }
+
+
+
+
+
+
 
             }
         </script>
