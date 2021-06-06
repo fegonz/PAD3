@@ -128,6 +128,7 @@
 
 
             }
+            var num = 0;
 
             function insRow() {
 
@@ -145,7 +146,7 @@
                     var filas = document.getElementById('tabla').rows.length - 1;
 
                     p.innerHTML = '<input type="checkbox"/>';
-                    task.innerHTML = "#" + filas + "<label onclick='editar()'/>" + document.getElementById("cell1").value + "</label>";
+                    task.innerHTML = "#" + filas + "<label id=" + num + " onclick='editar(" + num + ")'/>" + document.getElementById("cell1").value + "</label>";
                     priority.innerHTML = document.getElementById("cell2").value;
                     statusCheck.innerHTML = '<input  type="checkbox"/>';
                     status.innerHTML = document.getElementById("cell3").value;
@@ -153,6 +154,7 @@
 
                     var formu = document.getElementById("formu");
                     formu.parentNode.removeChild(formu);
+                    num++;
 
                 }
 
@@ -164,14 +166,41 @@
 
             }
 
-            function editar() {
+            function editar(num) {
 
+                var text = document.getElementById(num);
 
+                var content = document.getElementById(num).innerHTML;
 
+                var tr = text.parentNode;
 
+                var x = document.getElementById('agn');
+
+                x.innerHTML = '<form id="formu"><button onclick="cambia()">Edit</button></form>';
+
+                tr.innerHTML = '<input type="text"  id="task" value="' + content + '">';
 
 
             }
+
+            function cambia() {
+                console.log("que haces");
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             function deleteFile() {
 
