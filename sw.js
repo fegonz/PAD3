@@ -23,26 +23,20 @@ function limpiarCache(cacheName, numeroItems) {
 self.addEventListener('install', e => {
 
     const cacheProm = caches.open(CACHE_STATIC_NAME).then(cache => {
-            return cache.addAll([
-                '/',
-                '/index.html',
-                '/css/style.css',
-                '/js/app.js',
-                '/manifest.json'
-
-
-            ])
-        })
-        //para agnadir librerias de bootstrap si las hubiese
-    const cacheInmutable = caches.open(CACHE_INMUTABLE_NAME).then(cache => {
         return cache.addAll([
-
+            '/',
+            '/index.html',
+            '/css/style.css',
+            '/js/app.js',
+            '/manifest.json'
 
 
         ])
     })
 
-    e.waitUntil(Promise.all([cacheProm, cacheInmutable]));
+
+
+    e.waitUntil(Promise.all([cacheProm]));
 });
 
 
