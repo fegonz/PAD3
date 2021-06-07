@@ -8,5 +8,6 @@
     "start_url": "/index.html",
     "background_color": "#<color-fondo>",
     "display": "standalone",
+    "theme_color": "#2196F3",
     "scope": "/"
 }
