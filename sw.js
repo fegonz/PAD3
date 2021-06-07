@@ -33,14 +33,8 @@ self.addEventListener('install', e => {
 
             ])
         })
-        //para agnadir librerias de bootstrap
-    const cacheInmutable = caches.open(CACHE_INMUTABLE_NAME).then(cache => {
-        return cache.addAll([
+        //para agnadir librerias de bootstrap si las hubiese
 
-
-
-        ])
-    })
 
     e.waitUntil(Promise.all([cacheProm, cacheInmutable]));
 });
