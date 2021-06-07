@@ -22,7 +22,7 @@ self.addEventListener('install', e => {
 
     const cacheProm = caches.open(CACHE_STATIC_NAME).then(cache => {
         return cache.addAll([
-            './',
+
             './index.html',
             './css/style.css',
             './js/app.js',
