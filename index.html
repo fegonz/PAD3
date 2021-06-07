@@ -102,27 +102,31 @@
 
 
 
-                var num = document.getElementById('tabla').getElementsByTagName('tr').length - 1;
-                console.log(num);
-                /* var tr = text.parentNode;
-                tr.innerHTML = "<label id=" + num + 'cell2' + " />" + seleccion + "</label>";
+                var table = document.getElementById(tableID).tBodies[0];
 
-                if ('checkbox' == chkbox.type && true == chkbox.checked) {
-                    row.cells[4].innerHTML = "complete";
-
-                } */
+                var rowCount = table.rows.length;
 
 
 
+                for (var i = 1; i < rowCount; i++) {
+                    var row = table.rows[i];
 
+                    var chkbox = row.cells[4].getElementsByTagName('input')[0];
 
+                    if ('checkbox' == chkbox.type && true == chkbox.checked) {
+                        row.cells[5].innerHTML = "Complete";
 
-
-
-
-
+                    }
+                }
 
             }
+
+
+
+
+
+
+
             var num = 0;
 
             function insRow() {
@@ -141,11 +145,11 @@
 
                     var filas = document.getElementById('tabla').rows.length - 1;
 
-                    p.innerHTML = '<input type="checkbox"/>';
+                    p.innerHTML = '<input id="' + num + '" type="checkbox"/>';
                     number.innerHTML = "<label id=" + num + 'number' + " />" + '#' + filas + "</label>";
                     task.innerHTML = "<label id=" + num + " onclick='editar(" + num + ")'/>" + document.getElementById("cell1").value + "</label>";
                     priority.innerHTML = "<label id=" + num + 'cell2' + " />" + document.getElementById("cell2").value + "</label>";
-                    statusCheck.innerHTML = "<input id='comp'  type='checkbox'/>";
+                    statusCheck.innerHTML = '<input  type="checkbox"/>';
                     status.innerHTML = document.getElementById("cell3").value;
                     puntos.innerHTML = '<select id="' + num + 'cell4" onChange="priority(' + num + ',this.options[this.selectedIndex].value)" name="OS"><option>...</option><option value="High">High</option><option value="Medium">Medium</option> <option value="Low">Low</option> </select>';
 
@@ -224,6 +228,20 @@
                         row.cells[4].innerHTML = "Complete";
 
                     }
+
+                }
+
+                var table = document.getElementById(tableID).tBodies[0];
+
+                var rowCount = table.rows.length;
+
+                for (var i = 1; i < rowCount; i++) {
+                    var row = table.rows[i];
+
+                    var chkbox = row.cells[1].getElementsByTagName('label')[0];
+
+
+
                 }
 
 
