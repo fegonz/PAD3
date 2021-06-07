@@ -5,7 +5,7 @@
     "name": "PWA",
     "description": "PAD tabla",
     "icons": [],
-    "start_url": "/",
+    "start_url": "/index.html",
     "background_color": "#<color-fondo>",
     "display": "standalone",
     "scope": "/"
