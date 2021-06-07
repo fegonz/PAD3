@@ -21,7 +21,7 @@ function limpiarCache(cacheName, numeroItems) {
 self.addEventListener('install', e => {
 
     const cacheProm = caches.open(CACHE_STATIC_NAME).then(cache => {
-        return cache.addAll([
+        return cache.add([
             '/',
             '/index.html',
             '/css/style.css',
