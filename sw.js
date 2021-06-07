@@ -27,7 +27,8 @@ self.addEventListener('install', e => {
                 '/',
                 '/index.html',
                 '/css/style.css',
-                '/js/app.js'
+                '/js/app.js',
+                '/manifest.json'
 
 
             ])
