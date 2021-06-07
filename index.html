@@ -8,6 +8,19 @@
     <title>Mi PWA</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="manifest" href="manifest.json">
+    <script>
+        // Comprobar si el navegador ejecuta service workers
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').then(reg => {
+                    console.log('Todo bien:', reg)
+                }, function(err) {
+                    console.log('Fallo:', err)
+                })
+            })
+        }
+    </script>
+
 </head>
 
 <body>
@@ -251,7 +264,7 @@
         }
     </script>
 
-    <script src="js/app.js"></script>
+
 
 </body>
 
