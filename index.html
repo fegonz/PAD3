@@ -32,6 +32,7 @@
         <table id="tabla">
             <tr>
                 <td><input type="checkbox" /></td>
+                <td></td>
                 <td>TASK NAME</td>
                 <td>PRIORITY</td>
                 <td></td>
@@ -101,22 +102,16 @@
 
 
 
-                var table = document.getElementById(tableID).tBodies[0];
+                var num = document.getElementById('tabla').getElementsByTagName('tr').length - 1;
+                console.log(num);
+                /* var tr = text.parentNode;
+                tr.innerHTML = "<label id=" + num + 'cell2' + " />" + seleccion + "</label>";
 
-                var rowCount = table.rows.length;
+                if ('checkbox' == chkbox.type && true == chkbox.checked) {
+                    row.cells[4].innerHTML = "complete";
 
+                } */
 
-
-                for (var i = 1; i < rowCount; i++) {
-                    var row = table.rows[i];
-
-                    var chkbox = row.cells[3].getElementsByTagName('input')[0];
-
-                    if ('checkbox' == chkbox.type && true == chkbox.checked) {
-                        row.cells[4].innerHTML = "complete";
-
-                    }
-                }
 
 
 
@@ -136,21 +131,23 @@
                 if (document.getElementById("cell1").value.length > 0) {
                     var x = document.getElementById('tabla').insertRow(document.getElementById('tabla').rows.length);
                     var p = x.insertCell(0);
-                    var task = x.insertCell(1);
+                    var number = x.insertCell(1);
+                    var task = x.insertCell(2);
 
-                    var priority = x.insertCell(2);
-                    var statusCheck = x.insertCell(3);
-                    var status = x.insertCell(4);
-                    var puntos = x.insertCell(5);
+                    var priority = x.insertCell(3);
+                    var statusCheck = x.insertCell(4);
+                    var status = x.insertCell(5);
+                    var puntos = x.insertCell(6);
 
                     var filas = document.getElementById('tabla').rows.length - 1;
 
                     p.innerHTML = '<input type="checkbox"/>';
-                    task.innerHTML = "#" + filas + "<label id=" + num + " onclick='editar(" + num + ")'/>" + document.getElementById("cell1").value + "</label>";
-                    priority.innerHTML = document.getElementById("cell2").value;
-                    statusCheck.innerHTML = '<input  type="checkbox"/>';
+                    number.innerHTML = "<label id=" + num + 'number' + " />" + '#' + filas + "</label>";
+                    task.innerHTML = "<label id=" + num + " onclick='editar(" + num + ")'/>" + document.getElementById("cell1").value + "</label>";
+                    priority.innerHTML = "<label id=" + num + 'cell2' + " />" + document.getElementById("cell2").value + "</label>";
+                    statusCheck.innerHTML = "<input id='comp'  type='checkbox'/>";
                     status.innerHTML = document.getElementById("cell3").value;
-                    puntos.innerHTML = '<select id="cell4" name="OS"><option>...</option><option value="High">High</option><option value="Medium">Medium</option> <option value="Low">Low</option> </select>';
+                    puntos.innerHTML = '<select id="' + num + 'cell4" onChange="priority(' + num + ',this.options[this.selectedIndex].value)" name="OS"><option>...</option><option value="High">High</option><option value="Medium">Medium</option> <option value="Low">Low</option> </select>';
 
                     var formu = document.getElementById("formu");
                     formu.parentNode.removeChild(formu);
@@ -166,6 +163,12 @@
 
             }
 
+            function priority(num, seleccion) {
+                var text = document.getElementById(num + "cell2");
+                var tr = text.parentNode;
+                tr.innerHTML = "<label id=" + num + 'cell2' + " />" + seleccion + "</label>";
+            }
+
             function editar(num) {
 
                 var text = document.getElementById(num);
@@ -176,15 +179,19 @@
 
                 var x = document.getElementById('agn');
 
-                x.innerHTML = '<form id="formu"><button onclick="cambia()">Edit</button></form>';
+                x.innerHTML = '<button id="editable" onclick="cambia(' + num + ')">Edit</button>';
 
                 tr.innerHTML = '<input type="text"  id="task" value="' + content + '">';
 
 
             }
 
-            function cambia() {
-                console.log("que haces");
+            function cambia(num) {
+                //var tabla = document.getElementById('tabla');
+                //console.log(tabla);
+                var text = document.getElementById("task");
+                var tr = text.parentNode;
+                tr.innerHTML = "<label id=" + num + " onclick='editar(" + num + ")'/>" + document.getElementById("task").value + "</label>";
             }
 
 
