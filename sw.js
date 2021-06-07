@@ -1,4 +1,4 @@
-ACHE_NAME = 'cache-1';
+CACHE_NAME = 'cache-1';
 
 const CACHE_STATIC_NAME = 'static-v1';
 const CACHE_DYNAMIC_NAME = 'dynamic-v1';
@@ -34,7 +34,13 @@ self.addEventListener('install', e => {
             ])
         })
         //para agnadir librerias de bootstrap si las hubiese
+    const cacheInmutable = caches.open(CACHE_INMUTABLE_NAME).then(cache => {
+        return cache.addAll([
 
+
+
+        ])
+    })
 
     e.waitUntil(Promise.all([cacheProm, cacheInmutable]));
 });
